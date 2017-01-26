@@ -1,0 +1,77 @@
+# Import webdriver and create a variable called driver that users the Chrome browser. Import OrderedDict
+# for creating a dictionary. Impor csv for exporting informatin gathered as csv. Also, tell the driver to fetch and open the aacsb website.
+from selenium import webdriver
+import csv
+from collections import OrderedDict
+driver = webdriver.Chrome('/users/matthewknegt/chromedriver')
+driver.get("https://datadirect.aacsb.edu/public/profiles/profile.cfm?interstitialComplete=1&runReport=1&unitid=55340&userType=All")
+
+
+#A dictionary that we will fill with all of the information we gather. We will export this as a CSV.
+institution_info = OrderedDict()
+
+# Grab the institution name and put it in the institution_info dictionary labelled as "Name".
+inst_name_0 = driver.find_element_by_xpath('//*[@id="main"]/table[1]/tbody/tr[1]/td')
+institution_info['Name'] = inst_name_0.text
+
+# Grab the institution Address and put it in the institution_info dictionary labelled as "Address".
+inst_name_1 = driver.find_element_by_xpath('//*[@id="main"]/table[1]/tbody/tr[2]/td')
+institution_info['Address'] = inst_name_1.text
+
+# Grab the institution City and put it in the institution_info dictionary labelled as "City".
+inst_name_2 = driver.find_element_by_xpath('//*[@id="main"]/table[1]/tbody/tr[4]/td')
+institution_info['City'] = inst_name_2.text
+
+# Grab the institution State and put it in the institution_info dictionary labelled as "State".
+inst_name_3 = driver.find_element_by_xpath('//*[@id="main"]/table[1]/tbody/tr[5]/td')
+institution_info['State'] = inst_name_3.text
+
+# Grab the institution Zip and put it in the institution_info dictionary labelled as "Zip".
+inst_name_4 = driver.find_element_by_xpath('//*[@id="main"]/table[1]/tbody/tr[6]/td')
+institution_info['Zip'] = inst_name_4.text
+
+# Grab the institution Country and put it in the institution_info dictionary labelled as "Country".
+inst_name_5 = driver.find_element_by_xpath('//*[@id="main"]/table[1]/tbody/tr[7]/td')
+institution_info['Country'] = inst_name_5.text
+
+# Grab the institution Accred. Status and put it in the institution_info dictionary labelled as "Accred. Status".
+inst_name_6 = driver.find_element_by_xpath('//*[@id="main"]/table[1]/tbody/tr[8]/td')
+institution_info['Accred. Status'] = inst_name_6.text
+
+
+
+# Export the gathered information to a CSV titled mycsvfile.csv
+with open('mycsvfile.csv', 'w') as f:
+    w = csv.writer(f)
+    w.writerow(institution_info.keys())
+    w.writerow(institution_info.values())
+
+
+# Create a function for gathering the information from the "General Information" grid.
+#def general_information():
+    #results = driver.find_elements_by_xpath('//*[@id="main"]/table[1]')
+
+    #for result in results:
+        #gen_info = {}
+
+        #gen_info['Name'] = results.driver.find_elements_by_xpath('//*[@id="main"]/table[1]/tbody/tr[1]')
+        #gen_info['Address'] = results.driver.find_elements_by_xpath('//*[@id="main"]/table[1]/tbody/tr[2]')
+        #gen_info['City'] = results.driver.find_elements_by_xpath('//*[@id="main"]/table[1]/tbody/tr[4]')
+        #gen_info['State'] = results.driver.find_elements_by_xpath('//*[@id="main"]/table[1]/tbody/tr[5]')
+        #gen_info['Zip'] = results.driver.find_elements_by_xpath('//*[@id="main"]/table[1]/tbody/tr[6]')
+        #gen_info['Country'] = results.driver.find_elements_by_xpath('//*[@id="main"]/table[1]/tbody/tr[7]')
+        #gen_info['Accred Status'] = results.driver.find_elements_by_xpath('//*[@id="main"]/table[1]/tbody/tr[8]')
+        #print(gen_info)
+
+
+#inst_name = driver.find_element_by_xpath('//*[@id="main"]/table[1]/tbody/tr[2]')
+#inst_name.text
+#print(inst_name.text)
+
+
+
+
+
+
+
+
