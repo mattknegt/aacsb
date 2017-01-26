@@ -3,40 +3,83 @@
 from selenium import webdriver
 import csv
 from collections import OrderedDict
+
 driver = webdriver.Chrome('/users/matthewknegt/chromedriver')
 driver.get("https://datadirect.aacsb.edu/public/profiles/profile.cfm?interstitialComplete=1&runReport=1&unitid=55340&userType=All")
 
+
+"""General Information Section"""
 
 #A dictionary that we will fill with all of the information we gather. We will export this as a CSV.
 institution_info = OrderedDict()
 
 # Grab the institution name and put it in the institution_info dictionary labelled as "Name".
-inst_name_0 = driver.find_element_by_xpath('//*[@id="main"]/table[1]/tbody/tr[1]/td')
-institution_info['Name'] = inst_name_0.text
+inst_0 = driver.find_element_by_xpath('//*[@id="main"]/table[1]/tbody/tr[1]/td')
+institution_info['Name'] = inst_0.text
 
 # Grab the institution Address and put it in the institution_info dictionary labelled as "Address".
-inst_name_1 = driver.find_element_by_xpath('//*[@id="main"]/table[1]/tbody/tr[2]/td')
-institution_info['Address'] = inst_name_1.text
+inst_1 = driver.find_element_by_xpath('//*[@id="main"]/table[1]/tbody/tr[2]/td')
+institution_info['Address'] = inst_1.text
 
 # Grab the institution City and put it in the institution_info dictionary labelled as "City".
-inst_name_2 = driver.find_element_by_xpath('//*[@id="main"]/table[1]/tbody/tr[4]/td')
-institution_info['City'] = inst_name_2.text
+inst_2 = driver.find_element_by_xpath('//*[@id="main"]/table[1]/tbody/tr[4]/td')
+institution_info['City'] = inst_2.text
 
 # Grab the institution State and put it in the institution_info dictionary labelled as "State".
-inst_name_3 = driver.find_element_by_xpath('//*[@id="main"]/table[1]/tbody/tr[5]/td')
-institution_info['State'] = inst_name_3.text
+inst_3 = driver.find_element_by_xpath('//*[@id="main"]/table[1]/tbody/tr[5]/td')
+institution_info['State'] = inst_3.text
 
 # Grab the institution Zip and put it in the institution_info dictionary labelled as "Zip".
-inst_name_4 = driver.find_element_by_xpath('//*[@id="main"]/table[1]/tbody/tr[6]/td')
-institution_info['Zip'] = inst_name_4.text
+inst_4 = driver.find_element_by_xpath('//*[@id="main"]/table[1]/tbody/tr[6]/td')
+institution_info['Zip'] = inst_4.text
 
 # Grab the institution Country and put it in the institution_info dictionary labelled as "Country".
-inst_name_5 = driver.find_element_by_xpath('//*[@id="main"]/table[1]/tbody/tr[7]/td')
-institution_info['Country'] = inst_name_5.text
+inst_5 = driver.find_element_by_xpath('//*[@id="main"]/table[1]/tbody/tr[7]/td')
+institution_info['Country'] = inst_5.text
 
 # Grab the institution Accred. Status and put it in the institution_info dictionary labelled as "Accred. Status".
-inst_name_6 = driver.find_element_by_xpath('//*[@id="main"]/table[1]/tbody/tr[8]/td')
-institution_info['Accred. Status'] = inst_name_6.text
+inst_6 = driver.find_element_by_xpath('//*[@id="main"]/table[1]/tbody/tr[8]/td')
+institution_info['Accred. Status'] = inst_6.text
+
+
+
+"""Enrollment Section"""
+
+# Grab the institution FT Undergrad enroll and put it in the institution_info dictionary labelled as "FT undergrad Enrollment".
+inst_7 = driver.find_element_by_xpath('//*[@id="main"]/table[3]/tbody/tr[1]/td')
+institution_info['FT UnderGrad Enrollment'] = inst_7.text
+
+# Grab the institution FT masters enroll and put it in the institution_info dictionary labelled as "FT Masters Enrollment".
+inst_8 = driver.find_element_by_xpath('//*[@id="main"]/table[3]/tbody/tr[2]/td')
+institution_info['FT Masters Enrollment'] = inst_8.text
+
+# Grab the institution FT doctors enroll and put it in the institution_info dictionary labelled as "FT Doctors Enrollment".
+inst_9 = driver.find_element_by_xpath('//*[@id="main"]/table[3]/tbody/tr[3]/td')
+institution_info['FT Doctors Enrollment'] = inst_9.text
+
+# Grab the institution PT Undergrad enroll and put it in the institution_info dictionary labelled as "PT undergrad Enrollment".
+inst_10 = driver.find_element_by_xpath('//*[@id="main"]/table[3]/tbody/tr[4]/td')
+institution_info['PT UnderGrad Enrollment'] = inst_10.text
+
+# Grab the institution PT Masters enroll and put it in the institution_info dictionary labelled as "PT Masters Enrollment".
+inst_11 = driver.find_element_by_xpath('//*[@id="main"]/table[3]/tbody/tr[5]/td')
+institution_info['PT Masters Enrollment'] = inst_11.text
+
+# Grab the institution PT doctors enroll and put it in the institution_info dictionary labelled as "PT doctors Enrollment".
+inst_12 = driver.find_element_by_xpath('//*[@id="main"]/table[3]/tbody/tr[6]/td')
+institution_info['PT Doctors Enrollment'] = inst_12.text
+
+# Grab the institution percentage of students from hsot country and put it in the institution_info dictionary.
+inst_13 = driver.find_element_by_xpath('//*[@id="main"]/table[3]/tbody/tr[7]/td')
+institution_info['Per. of Students from Host Country '] = inst_13.text
+
+# Grab the institution percentage of masters students from host country and put it in the institution_info dictionary.
+inst_14 = driver.find_element_by_xpath('//*[@id="main"]/table[3]/tbody/tr[8]/td')
+institution_info['Per. of Masters Students from Host Country'] = inst_14.text
+
+# Grab the institution percentage of doctoral students from host country and put it in the institution_info dictionary.
+inst_15 = driver.find_element_by_xpath('//*[@id="main"]/table[3]/tbody/tr[9]/td')
+institution_info['Per. of Doctoral Students from Host Country'] = inst_15.text
 
 
 
